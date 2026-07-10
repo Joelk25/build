@@ -1,1 +1,1 @@
-PACKAGE_LIST_ADDITIONAL="tmux htop curl git python3-pip"
+PACKAGE_LIST_ADDITIONAL="git python3-pip curl htop network-manager iw wireless-tools"
