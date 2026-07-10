@@ -1,0 +1,28 @@
+name: Build BeagleY-AI XFCE Desktop Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      debian_release:
+        description: 'Select Debian Version'
+        required: true
+        default: 'bookworm'
+        type: choice
+        options:
+          - bookworm
+          - trixie
+
+jobs:
+  build-armbian:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile XFCE Desktop Image
+        uses: armbian/build@main
+        with:
+          armbian_token: "${{ secrets.GITHUB_TOKEN }}"
+          armbian_board: "beagley-ai"
+          armbian_release: "${{ inputs.debian_release }}"
+          armbian_ui: "xfce"
